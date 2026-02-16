@@ -1,0 +1,82 @@
+@use "../styles/utils/variables" as *;
+@use "../styles/utils/mixins" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  background-color: $primary-background;
+  padding: 0 16px;
+}
+
+.inner {
+  display: flex;
+  width: 100%;
+  height: 119px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoImg {
+  width: 70px;
+  height: 84px;
+}
+
+.cta {
+  width: 181px;
+  height: 45px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  font-size: $p;
+  font-weight: 500;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.cta span {
+  position: relative;
+  z-index: 2;
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  @include linear-gradient();
+  @include gradient-button();
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Плавный фон */
+.cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  @include linear-gradient();
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.cta:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 1400px) {
+  .page {
+    padding: 40px;
+  }
+}

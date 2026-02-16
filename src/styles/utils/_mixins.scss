@@ -1,0 +1,13 @@
+@mixin linear-gradient($direction: 0deg, $start-color: #F5BEF6, $end-color: #FB8627) {
+  background: linear-gradient($direction, $start-color 0%, $end-color 100%);
+}
+@mixin gradient-button() {
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+@mixin font-adjust() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}

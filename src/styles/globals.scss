@@ -1,0 +1,44 @@
+@use "../styles/utils/variables" as *;
+@use "../styles/utils/fonts";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  color: #fff;
+  background: $primary-background;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (max-width: 520px) {
+  .container {
+    padding: 0 10px;
+  }
+
+}

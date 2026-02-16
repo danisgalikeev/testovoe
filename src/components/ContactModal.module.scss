@@ -1,0 +1,227 @@
+@use ".././styles/utils/variables" as *;
+@use ".././styles/utils/mixins" as *;
+
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.panel {
+  position: relative;
+  width: min(560px, calc(100% - 32px));
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  color: black;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.headTitle {
+  font-size: $h2;
+  font-weight: 600;
+  @include font-adjust();
+  text-transform: uppercase;
+  margin: 0;
+}
+.close {
+  background-image: url("/images/Vector.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.input,
+.textarea {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.error {
+  color: #b00020;
+  margin: 0;
+  font-size: 14px;
+}
+
+.submit {
+  width: 126px;
+  height: 45px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 40px;
+  background: transparent;
+  color: #000;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  isolation: isolate;
+  overflow: hidden;
+
+  transition: color 0.3s ease-in-out;
+}
+
+.submit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  @include linear-gradient();
+  @include gradient-button();
+  pointer-events: none;
+  z-index: 2;
+}
+
+.submit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  @include linear-gradient();
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.submit:hover {
+  color: #fff;
+}
+
+.submit:hover::after {
+  opacity: 1;
+}
+
+
+.checkboxLabel {
+  font-size: $caption;
+  font-weight: 500;
+  @include font-adjust();
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+.agreeContainer {
+  margin-bottom: 30px;
+}
+
+.customCheckbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkboxBox {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  background: transparent;
+  isolation: isolate;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    @include linear-gradient();
+    @include gradient-button();
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    width: 6px;
+    height: 10px;
+    border: solid #FB8627;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
+.checkboxInput:checked + .checkboxBox {
+  @include linear-gradient();
+}
+
+.checkboxInput:checked + .checkboxBox::after {
+  border-color: #fff;
+  transform: translate(-50%, -50%) rotate(45deg) scale(1);
+}
+.input {
+  border: 1px solid #0F0F17;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+input::placeholder {
+  font-size: $p;
+  font-weight: 400;
+  @include font-adjust();
+}
+input:focus::placeholder {
+  color: #000;
+}
+
+@media (max-width: 520px) {
+  .root {
+    padding: 0;
+  }
+
+  .overlay {
+    background: #fff;
+  }
+
+  .panel {
+    width: 100vw;
+    height: 100vh;
+    height: 100svh;
+
+    max-width: none;
+    border-radius: 0;
+
+    margin: 0;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
