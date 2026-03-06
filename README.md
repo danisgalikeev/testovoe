@@ -36,3 +36,9 @@ https://testovoe-dg.netlify.app/
 - Fetch API
 - Netlify (deployment)
 
+**Запуск**
+```bash
+cd test-project
+npm install
+npm run dev
+```
