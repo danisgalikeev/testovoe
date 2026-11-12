@@ -22,6 +22,7 @@ export function NewsCard({ id, slug, title, excerpt, date, image }: Props) {
                         alt=""
                         width={600}
                         height={400}
+                        unoptimized
                         style={{ width: "100%", height: "300px" }}
                     />
                 )}
